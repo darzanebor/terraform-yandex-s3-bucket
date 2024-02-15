@@ -59,7 +59,7 @@ variable "bucket_permissions" {
 
 variable "enable_folder_role" {
   description = "Enable folder role"
-  default     = true
+  default     = false
   type        = bool
 }
 
