@@ -10,8 +10,9 @@ resource "yandex_iam_service_account_static_access_key" "this" {
 }
 
 resource "yandex_resourcemanager_folder_iam_binding" "this" {
+  count = var.enable_folder_role ? 1 : 0
   folder_id = var.folder_id
-  role      = "storage.admin"
+  role      = var.default_folder_role
 
   members = [
     "serviceAccount:${yandex_iam_service_account.this.id}",

@@ -118,6 +118,6 @@ resource "yandex_storage_bucket" "this" {
   grant {
     id          = yandex_iam_service_account.this.id
     type        = "CanonicalUser"
-    permissions = ["FULL_CONTROL"]
+    permissions = var.bucket_permissions
   }
 }
