@@ -92,7 +92,7 @@ resource "yandex_storage_bucket" "this" {
       }
     }
   }
-  
+
   dynamic "server_side_encryption_configuration" {
     for_each    = try(yandex_kms_symmetric_key.this,[])
     iterator    = key
