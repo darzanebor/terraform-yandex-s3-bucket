@@ -1,9 +1,12 @@
 name: pre-commit
 
 on:
-  pull_request:
   push:
-    branches: [master]
+    branches:
+    - master
+    - feature/*
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   pre-commit:
