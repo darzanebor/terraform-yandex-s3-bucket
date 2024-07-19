@@ -65,6 +65,12 @@ variable "enable_folder_role" {
 
 variable "default_folder_role" {
   description = "Default folder role"
+  default     = "storage.editor"
+  type        = string
+}
+
+variable "default_sa_folder_role" {
+  description = "Default sa folder role"
   default     = "storage.admin"
   type        = string
 }

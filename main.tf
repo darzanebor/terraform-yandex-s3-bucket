@@ -8,8 +8,8 @@ resource "yandex_kms_symmetric_key" "this" {
 
 resource "yandex_storage_bucket" "this" {
   bucket     = var.name
-  access_key = yandex_iam_service_account_static_access_key.this.access_key
-  secret_key = yandex_iam_service_account_static_access_key.this.secret_key
+  access_key = var.enable_folder_role ? yandex_iam_service_account_static_access_key.this.access_key : yandex_iam_service_account_static_access_key.sa[0].access_key
+  secret_key = var.enable_folder_role ? yandex_iam_service_account_static_access_key.this.secret_key : yandex_iam_service_account_static_access_key.sa[0].secret_key
 
   max_size = var.max_size
   default_storage_class = var.default_storage_class
@@ -120,4 +120,9 @@ resource "yandex_storage_bucket" "this" {
     type        = "CanonicalUser"
     permissions = var.bucket_permissions
   }
+
+  depends_on = [
+    yandex_iam_service_account.this,
+    yandex_iam_service_account_static_access_key.this
+  ]
 }
