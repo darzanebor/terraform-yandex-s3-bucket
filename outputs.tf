@@ -8,12 +8,12 @@ output "bucket_id" {
   value       = yandex_storage_bucket.this.id
 }
 
-output "bucket_sa_access_key" {
+output "bucket_rw_access_key" {
   description = "SA access key"
   value       = yandex_iam_service_account_static_access_key.this.access_key
 }
 
-output "bucket_sa_secret_key" {
+output "bucket_rw_secret_key" {
   description = "SA secret key"
   value       = yandex_iam_service_account_static_access_key.this.secret_key
 }
